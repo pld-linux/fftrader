@@ -1,0 +1,244 @@
+diff -Naur fftrader-0.65.ori/fftfile.cpp fftrader-0.65.mod/fftfile.cpp
+--- fftrader-0.65.ori/fftfile.cpp	2004-04-10 16:10:14.000000000 +0000
++++ fftrader-0.65.mod/fftfile.cpp	2004-04-30 00:06:53.000000000 +0000
+@@ -420,7 +420,7 @@
+ 	{
+ 		if(IsFPK(*i))
+ 		{
+-			temp="fpk/";
++			temp="/usr/share/fftrader/fpk/";
+ 			temp+=*i;
+ 			PHYSFS_addToSearchPath(temp.c_str(), 1);
+ 		}
+@@ -468,18 +468,18 @@
+ 	{
+ 		if(IsFPK(*i))
+ 		{
+-			temp="fpk/";
++			temp="/usr/share/fftrader/fpk/";
+ 			temp+=*i;
+ 			PHYSFS_addToSearchPath(temp.c_str(), 1);
+ 		}
+ 	}
+ 	PHYSFS_freeList(fpklist);
+-	fpksave.erase(0,4); // get rid of "fpk/" prefix
++	fpksave.erase(0,4); // get rid of "/usr/share/fftrader/fpk/" prefix
+ 	return fpksave;
+ }
+ void FPK_Invalid(std::string fpk, std::string message)
+ {
+-	TTF_Font *font=TTF_OpenFont("fonts/arial.ttf", 12);
++	TTF_Font *font=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 12);
+ 	SDL_Color white = { 0xFF, 0xFF, 0xFF, 0 };
+ 	SDL_Surface *screen=SDL_GetVideoSurface();
+ 	std::string msg[20];
+@@ -548,7 +548,7 @@
+ 		PHYSFS_removeFromSearchPath(temp.c_str());
+ 	}
+ 	PHYSFS_freeList(spath);
+-	temp="fpk/"; temp+=fpksave;
++	temp="/usr/share/fftrader/fpk/"; temp+=fpksave;
+ 	PHYSFS_addToSearchPath(temp.c_str(), 1);
+ 	//read the fpk objects file for the
+ 	//player ship designated by num
+@@ -579,7 +579,7 @@
+ 	{
+ 		if(IsFPK(*i))
+ 		{
+-			temp="fpk/";
++			temp="/usr/share/fftrader/fpk/";
+ 			temp+=*i;
+ 			PHYSFS_addToSearchPath(temp.c_str(), 1);
+ 		}
+@@ -609,7 +609,7 @@
+ 	PHYSFS_freeList(spath);
+ 	//get surface
+ 	SDL_Surface *surface;
+-	temp="fpk/"; temp+=fpksave;
++	temp="/usr/share/fftrader/fpk/"; temp+=fpksave;
+ 	PHYSFS_addToSearchPath(temp.c_str(), 1);
+ 	surface=LoadIMG(imgsave);
+ 	PHYSFS_removeFromSearchPath(temp.c_str());
+@@ -621,7 +621,7 @@
+ 	{
+ 		if(IsFPK(*i))
+ 		{
+-			temp="fpk/";
++			temp="/usr/share/fftrader/fpk/";
+ 			temp+=*i;
+ 			PHYSFS_addToSearchPath(temp.c_str(), 1);
+ 		}
+@@ -707,7 +707,7 @@
+ 			if (listindex==cur)
+ 			{
+ 				fpk=*i;
+-				temp="fpk/";
++				temp="/usr/share/fftrader/fpk/";
+ 				temp+=fpk;
+ 			}
+ 			cur++;
+@@ -883,7 +883,7 @@
+ 	{
+ 		if(IsFPK(*i))
+ 		{
+-			temp="fpk/";
++			temp="/usr/share/fftrader/fpk/";
+ 			temp+=*i;
+ 			PHYSFS_addToSearchPath(temp.c_str(), 1);
+ 		}
+@@ -1005,7 +1005,7 @@
+ 		PHYSFS_removeFromSearchPath(temp.c_str());
+ 	}
+ 	PHYSFS_freeList(spath);
+-	temp="fpk/"; temp+=fpk;
++	temp="/usr/share/fftrader/fpk/"; temp+=fpk;
+ 	PHYSFS_addToSearchPath(temp.c_str(), 1);
+ 
+ 	SDL_FreeSurface(image);
+@@ -1021,7 +1021,7 @@
+ 	{
+ 		if(IsFPK(*i))
+ 		{
+-			temp="fpk/";
++			temp="/usr/share/fftrader/fpk/";
+ 			temp+=*i;
+ 			PHYSFS_addToSearchPath(temp.c_str(), 1);
+ 		}
+diff -Naur fftrader-0.65.ori/gui.cpp fftrader-0.65.mod/gui.cpp
+--- fftrader-0.65.ori/gui.cpp	2004-04-05 02:44:38.000000000 +0000
++++ fftrader-0.65.mod/gui.cpp	2004-04-30 00:06:53.000000000 +0000
+@@ -83,11 +83,11 @@
+ 	buttondown=LoadIMG("gfx/gui/buttondown.png");
+ 	buttonuphover=LoadIMG("gfx/gui/buttonuphover.png");
+ 	buttondownhover=LoadIMG("gfx/gui/buttondownhover.png");
+-	font10=TTF_OpenFont("fonts/arial.ttf", 10);
+-    font12=TTF_OpenFont("fonts/arial.ttf", 12);
+-    font14=TTF_OpenFont("fonts/arial.ttf", 14);
+-    font16=TTF_OpenFont("fonts/arial.ttf", 16);
+-    font18=TTF_OpenFont("fonts/arial.ttf", 18);
++	font10=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 10);
++    font12=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 12);
++    font14=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 14);
++    font16=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 16);
++    font18=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 18);
+ 	buttonisdown=false;
+ }
+ int GUI::MakeWindow(int x, int y, int w, int h)
+diff -Naur fftrader-0.65.ori/guiapply.cpp fftrader-0.65.mod/guiapply.cpp
+--- fftrader-0.65.ori/guiapply.cpp	2004-04-10 03:57:30.000000000 +0000
++++ fftrader-0.65.mod/guiapply.cpp	2004-04-30 00:06:53.000000000 +0000
+@@ -20,7 +20,7 @@
+ 	int sQuit=startingGUI->MakeButton(100,280,w-200, "Quit");
+ 
+ 	SDL_Color white = { 0xFF, 0xFF, 0xFF, 0 };
+-	TTF_Font *font=TTF_OpenFont("fonts/arial.ttf", 14);
++	TTF_Font *font=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 14);
+ 	int done=0;
+ 	int getx, gety, click, temp;
+ 	double x=0;
+@@ -169,7 +169,7 @@
+ 	bool showinuse=false;
+ 	bool wasinuse=false;
+ 	SDL_Color white = { 0xFF, 0xFF, 0xFF, 0 };
+-	TTF_Font *font=TTF_OpenFont("fonts/arial.ttf", 14);
++	TTF_Font *font=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 14);
+ 
+ 	while(!done)
+ 	{
+@@ -565,7 +565,7 @@
+ 	int sCancel=optionsGUI->MakeButton(100,280,w-200, "Back to Main Menu");
+ 
+ 	SDL_Color white = { 0xFF, 0xFF, 0xFF, 0 };
+-	TTF_Font *font=TTF_OpenFont("fonts/arial.ttf", 14);
++	TTF_Font *font=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 14);
+ 	int done=0;
+ 	int getx, gety, click;
+ 	while(!done)
+diff -Naur fftrader-0.65.ori/main.cpp fftrader-0.65.mod/main.cpp
+--- fftrader-0.65.ori/main.cpp	2004-04-13 00:51:54.000000000 +0000
++++ fftrader-0.65.mod/main.cpp	2004-04-30 00:06:53.000000000 +0000
+@@ -139,14 +139,14 @@
+ 	if (LOG) printf("SDL_ttf initialized successfully\n");
+ 
+ 	// load font
+-	font=LoadTTF("fonts/arial.ttf", 10);
++	font=LoadTTF("/usr/share/fftrader/arial.ttf", 10);
+ 	if(!font) {
+-	printf("Unable to Open font 'fonts/arial.ttf' -  TTF_OpenFont: %s\n", TTF_GetError());
++	printf("Unable to Open font '/usr/share/fftrader/arial.ttf' -  TTF_OpenFont: %s\n", TTF_GetError());
+ 	// handle error
+ 	}
+-	font2=LoadTTF("fonts/arial.ttf", 14);
++	font2=LoadTTF("/usr/share/fftrader/arial.ttf", 14);
+ 	if(!font2) {
+-	printf("Unable to Open font 'fonts/arial.ttf' - TTF_OpenFont: %s\n", TTF_GetError());
++	printf("Unable to Open font '/usr/share/fftrader/arial.ttf' - TTF_OpenFont: %s\n", TTF_GetError());
+ 	// handle error
+ 	}
+ 	if (LOG) printf("Main Fonts loaded\n");
+@@ -199,7 +199,7 @@
+ 	{
+ 		if (strcmp(fpktemp.c_str(),"base.fpk") && IsFPK(*k))
+ 		{
+-			fpktemp="fpk/";
++			fpktemp="/usr/share/fftrader/fpk/";
+ 			fpktemp+=*k;
+ 			PHYSFS_addToSearchPath(fpktemp.c_str(), 1);
+ 		}
+@@ -662,7 +662,7 @@
+ 	map->CheckSectors(sx, sy);
+ 	float zoom=1;
+ 	if (LOG) printf("Variables set, displaying opening message\n");
+-	TTF_Font *font9=TTF_OpenFont("fonts/arial.ttf", 9);
++	TTF_Font *font9=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 9);
+ 	while(!done)
+ 	{
+ 		Slock();
+diff -Naur fftrader-0.65.ori/scenario.cpp fftrader-0.65.mod/scenario.cpp
+--- fftrader-0.65.ori/scenario.cpp	2004-04-10 03:01:30.000000000 +0000
++++ fftrader-0.65.mod/scenario.cpp	2004-04-30 00:06:53.000000000 +0000
+@@ -974,8 +974,8 @@
+ 	int h=screen->h;
+ 	GUI *sGUI=new GUI;
+ 	SDL_Color white = { 0xFF, 0xFF, 0xFF, 0 };
+-	TTF_Font *font=TTF_OpenFont("fonts/arial.ttf", 12);
+-	TTF_Font *font14=TTF_OpenFont("fonts/arial.ttf", 14);
++	TTF_Font *font=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 12);
++	TTF_Font *font14=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 14);
+ 	char **scnlist;
+ 	char **k;
+ 	std::string retval;
+@@ -1139,8 +1139,8 @@
+ 	SDL_Surface *screen=SDL_GetVideoSurface();
+ 	GUI *sGUI=new GUI;
+ 	SDL_Color white = { 0xFF, 0xFF, 0xFF, 0 };
+-	TTF_Font *font=TTF_OpenFont("fonts/arial.ttf", 12);
+-	TTF_Font *font14=TTF_OpenFont("fonts/arial.ttf", 14);
++	TTF_Font *font=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 12);
++	TTF_Font *font14=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 14);
+ 	char **fpklist;
+ 	char **k;
+ 	Uint8 cr[6];
+@@ -1456,7 +1456,7 @@
+ }
+ void SCN_Invalid(std::string scn, std::string message)
+ {
+-	TTF_Font *font=TTF_OpenFont("fonts/arial.ttf", 12);
++	TTF_Font *font=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 12);
+ 	SDL_Color white = { 0xFF, 0xFF, 0xFF, 0 };
+ 	SDL_Surface *screen=SDL_GetVideoSurface();
+ 	std::string msg[20];
+diff -Naur fftrader-0.65.ori/units.cpp fftrader-0.65.mod/units.cpp
+--- fftrader-0.65.ori/units.cpp	2004-04-13 01:08:10.000000000 +0000
++++ fftrader-0.65.mod/units.cpp	2004-04-30 00:06:53.000000000 +0000
+@@ -1336,8 +1336,8 @@
+ 	dest.y = 0;
+ 	SDL_BlitSurface(screen, NULL, bg, &dest);
+ 	SDL_Color white = { 0xFF, 0xFF, 0xFF, 0 };
+-	TTF_Font *font=TTF_OpenFont("fonts/arial.ttf", 14);
+-	TTF_Font *font12=TTF_OpenFont("fonts/arial.ttf", 12);
++	TTF_Font *font=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 14);
++	TTF_Font *font12=TTF_OpenFont("/usr/share/fftrader/arial.ttf", 12);
+ 
+ 	int choice=0;
+ 	int buycur=0;
