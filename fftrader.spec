@@ -1,5 +1,5 @@
-Summary:	-
-Summary(pl):	-
+Summary:	Final Frontier Trader - space strategy game
+Summary(pl):	Final Frontier Trader - strategia kosmiczna
 Name:		fftrader
 Version:	0.65
 Release:	0.1
@@ -7,20 +7,27 @@ License:	GPL
 Group:		X11/Games
 Source0:	http://dl.sourceforge.net/fftrader/%{name}-src-%{version}.zip
 # Source0-md5:	062945a80e47d9e0f62a209c22c4f45d
+# Source0-size:	1838758
 #Patch0:		%{name}-makefile.patch
 Patch1:		%{name}-path.patch
-URL:		-
+URL:		http://fftrader.sourceforge.net/
 BuildRequires:	unzip
 BuildRequires:	SDL-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	SDL_gfx-devel
-BuildRequires:	physfs-devel
 BuildRequires:	SDL_image-devel
+BuildRequires:	physfs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-
+Final Frontier Trader is a 2D single player space strategy game. You pilot 
+a startship which is upgradable. You can buy, sell, or trade parts and even
+new startships. You can even join a fleet for experience in mission and combat.
+ 
 %description -l pl
+Final Frontier Trader jest jednoosobow± strategi± kosmiczn± 2D. Pilotujesz 
+statkiem kosmicznym, który jest unowocze¶niany. Mozesz kupiæ, sprzedaæ lub 
+handlowaæ czê¶ciami statku lub nim ca³ym. Mo¿esz nawet do³±czyæ do floty, w celuzdobycia do¶wiadczenia w misji i w walce.
 
 %prep
 %setup -q -c -T -n %{name}-%{version}
