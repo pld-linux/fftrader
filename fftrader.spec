@@ -7,7 +7,6 @@ License:	GPL
 Group:		X11/Games
 Source0:	http://dl.sourceforge.net/fftrader/%{name}-src-%{version}.zip
 # Source0-md5:	062945a80e47d9e0f62a209c22c4f45d
-# Source0-size:	1838758
 #Patch0:		%{name}-makefile.patch
 Patch1:		%{name}-path.patch
 URL:		http://fftrader.sourceforge.net/
