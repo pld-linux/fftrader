@@ -7,10 +7,14 @@ License:	GPL
 Group:		X11/Games
 Source0:	http://dl.sourceforge.net/fftrader/%{name}-src-%{version}.zip
 # Source0-md5:	062945a80e47d9e0f62a209c22c4f45d
-#Patch0:		%{name}-what.patch
+#Patch0:		%{name}-makefile.patch
 URL:		-
 BuildRequires:	unzip
 BuildRequires:	SDL-devel
+BuildRequires:	SDL_ttf-devel
+BuildRequires:	SDL_gfx-devel
+BuildRequires:	physfs-devel
+BuildRequires:	SDL_image-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -36,25 +40,17 @@ rm -f *.dll
 
 %install
 rm -rf $RPM_BUILD_ROOT
-# create directories if necessary
-#install -d $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+#%{__make} install \
+#	DESTDIR=$RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_bindir}
+install fft $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%pre
-
-%post
-
-%preun
-
-%postun
-
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CREDITS ChangeLog NEWS README THANKS TODO
+%doc TODO TODO.txt CHANGELOG CHANGELOG.txt README README.txt
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
+#%{_datadir}/%{name}
