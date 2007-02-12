@@ -1,5 +1,5 @@
 Summary:	Final Frontier Trader - space strategy game
-Summary(pl.UTF-8):   Final Frontier Trader - strategia kosmiczna
+Summary(pl.UTF-8):	Final Frontier Trader - strategia kosmiczna
 Name:		fftrader
 Version:	0.65
 Release:	0.1
