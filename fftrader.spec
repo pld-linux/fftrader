@@ -1,5 +1,5 @@
 Summary:	Final Frontier Trader - space strategy game
-Summary(pl):	Final Frontier Trader - strategia kosmiczna
+Summary(pl.UTF-8):   Final Frontier Trader - strategia kosmiczna
 Name:		fftrader
 Version:	0.65
 Release:	0.1
@@ -24,11 +24,11 @@ pilot a startship which is upgradable. You can buy, sell, or trade
 parts and even new startships. You can even join a fleet for
 experience in mission and combat.
  
-%description -l pl
-Final Frontier Trader jest jednoosobow± strategi± kosmiczn± 2D. Gracz
-pilotuje statkiem kosmicznym, który jest unowocze¶niany. Mo¿e kupiæ,
-sprzedaæ lub handlowaæ czê¶ciami statku lub nim ca³ym. Mo¿e nawet
-do³±czyæ do floty w celu zdobycia do¶wiadczenia w misji i w walce.
+%description -l pl.UTF-8
+Final Frontier Trader jest jednoosobowÄ… strategiÄ… kosmicznÄ… 2D. Gracz
+pilotuje statkiem kosmicznym, ktÃ³ry jest unowoczeÅ›niany. MoÅ¼e kupiÄ‡,
+sprzedaÄ‡ lub handlowaÄ‡ czÄ™Å›ciami statku lub nim caÅ‚ym. MoÅ¼e nawet
+doÅ‚Ä…czyÄ‡ do floty w celu zdobycia doÅ›wiadczenia w misji i w walce.
 
 %prep
 %setup -q -c -T
